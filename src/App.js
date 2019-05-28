@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import ProfileBar from "./components/ProfileBar/ProfileBar";
+import SideBar from "./components/SideBar/SideBar";
+import Editor from "./components/Editor/Editor";
+import './App.css'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div className="main-container">
+      <div className="nav-tabs flex">
+        <div className="nav arrow back" />
+        <div className="nav arrow forward disabled" />
+        <a className="nav" href="./sound.html">
+          sound
         </a>
-      </header>
+        <a className="nav" href="./mixer.html">
+          mixer
+        </a>
+        <a className="nav" href="./enhancement.html">
+          enhancement
+        </a>
+        <a className="nav" href="./eq.html">
+          eq
+        </a>
+        <a className="nav active" href="./mic.html">
+          mic
+        </a>
+        <a className="nav" href="./lighting.html">
+          lighting
+        </a>
+        <a className="nav" href="./power.html">
+          power
+        </a>
+        <div className="user">
+          <div className="avatar" />
+        </div>
+      </div>
+      <div className="body-wrapper scrollable">
+        <ProfileBar />
+        <div className="body-widgets flex">
+          <div className="widget-col col-left flex" >
+          <SideBar/>
+          </div>
+          <div className="widget-col col-left flex" >
+            <Editor/>
+          </div>
+        </div>
+      </div>
+
+      <div className="name-bar">razer macro</div>
     </div>
   );
 }

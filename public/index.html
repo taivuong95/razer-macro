@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -20,10 +19,92 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+     <!--INCLUDE CSS FILE-->
+
+     <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/fonts/roboto.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/fonts/razerf5.css"
+   />
+
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/main.css"
+   />
+
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/nav.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/dropdown.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/switch.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/slider.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/checkbox.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/tooltip.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/profile-bar.css"
+   />
+   <link
+     type="text/css"
+     rel="stylesheet"
+     href="%PUBLIC_URL%/assets/css/body-widgets.css"
+   />
+   <style type="text/css">
+    .h2-title .switch {
+      position: relative;
+      top: 3px;
+      left: 10px;
+    }
+    #micEnhance .slider-container {
+      width: 490px;
+      margin-left: 30px;
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+
+      will-change: height, opacity;
+      transition: height 0.3s, opacity 0.3s;
+    }
+    #micEnhance .slider-container.on {
+      height: 64px;
+      opacity: 1;
+      overflow: unset;
+      margin-bottom: 20px;
+    }
+  </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div class="main-container"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
