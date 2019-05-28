@@ -1,4 +1,97 @@
-#SideBar{
-    min-width: 400px;
-    max-width: 400px;
+#SideBar {
+  min-width: 400px;
+  max-width: 400px;
+}
+
+#SideBar .add-title{
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 20px;
+  color:#ccc!important;
+}
+
+.widget .icon.time {
+  background: url("../../assets/img_ui_3/icon_time.svg");
+}
+
+.widget .icon.keyboard {
+  background: url("../../assets/img_ui_3/icon_keyboard.svg");
+}
+
+.widget .icon.mouse {
+  background: url("../../assets/img_ui_3/icon_mouse.svg");
+}
+
+.widget .icon.macro {
+  background: url("../../assets/img_ui_3/icon_macro.1.svg");
+  border-radius: 50%;
+  /* background: #44d62c; */
+}
+
+
+
+.widget .icon.switch {
+  background: url("../../assets/img_ui_3/icon_switch.svg");
+  padding: 0!important;
+}
+
+.widget .icon.switch-light {
+    background: url("../../assets/img_ui_3/icon_switch_light.svg");
+  }
+
+  .widget .icon.launch {
+    background: url("../../assets/img_ui_3/icon_launch.svg");
+  }
+
+  .widget .icon.command {
+    background: url("../../assets/img_ui_3/icon_console.svg");
+  }
+
+  .widget .icon.multimedia {
+    background: url("../../assets/img_ui_3/icon_multimedia.svg");
+  }
+
+  .widget .icon.text-function {
+    background: url("../../assets/img_ui_3/icon_text_function.svg");
+  }
+  .widget .icon.loop {
+    background: url("../../assets/img_ui_3/icon_loop.svg");
+  }
+
+.widget .icon.time,
+.widget .icon.keyboard,
+.widget .icon.mouse,
+.widget .icon.macro,
+.widget .icon.mouse,
+.widget .icon.switch,
+.widget .icon.switch-light,
+.widget .icon.launch,
+.widget .icon.icon.command,
+.widget .icon.multimedia,
+.widget .icon.text-function,
+.widget .icon.loop {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-size: 30px 30px;
+  margin-right: 20px;
+}
+
+.list-item {
+  margin-left: -60px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.item:hover {
+  transform: translateY(-5px);
 }

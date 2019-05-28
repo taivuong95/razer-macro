@@ -59,20 +59,7 @@
     left: 40px;
 }
 
-.widget .time::before {
-	height: 14px;
-	width: 14px;
-	background-image: url('../img_ui_3/icon_time.svg');
-	background-color: #5d5d5d;
-	background-repeat: no-repeat;
-	border-radius: 7px;
-	content: '';
-    display: inline-block;
-    margin-right: 6px;
-    position: absolute;
-    top: 32px;
-    left: 40px;
-}
+
 
 .widget .help {
 	position: absolute;
