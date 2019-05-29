@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
 }
-.widget-custom {
+.widget-custom-for-editor {
   padding: 15px 15px !important;
 }
 
@@ -56,3 +56,4 @@
   opacity: 0.5;
   cursor: pointer;
 }
+

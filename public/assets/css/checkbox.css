@@ -86,6 +86,7 @@ input[type="checkbox"]:checked + .check-box,
     border-color: #44d62c;
     background-color: #44d62c;
 }
+
 input[type="checkbox"]:checked + .check-box::after,
 .check-box.checked::after {
     height: calc(20px * 0.48);
@@ -125,3 +126,4 @@ input[type="checkbox"]:checked + .check-box::before,
     left: 9px;
     margin-right: 11px;
 }
+

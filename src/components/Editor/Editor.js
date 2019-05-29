@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import "./Editor.css";
 const Editor = props => {
   return (
-    <div className="widget widget-custom" id="Editor">
+    <div className="widget widget-custom-for-editor" id="Editor">
       <div className="head-editor">
         <div className="check-item check-item-custom">
           <input type="checkbox" />
-          <label className="check-box">
+          <label  className="check-box">
             <div className="check-text check-text-custom">
               <li className="item-2">
                 <i className="icon time-2" />
