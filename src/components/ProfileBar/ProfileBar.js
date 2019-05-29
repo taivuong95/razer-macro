@@ -42,9 +42,10 @@ const ProfileBar = props => {
           </div>
           <div className="thx-btn" id="deleteConfirm">delete</div>
         </div>
-        <div className="obm hover-border" tooltip="On-board Profiles" />
+        {/* <div className="obm hover-border" tooltip="On-board Profiles" /> */}
         <div className="divider" />
-        <div className="batt batt-30" tooltip="30% Battery" />
+        {/* <div className="batt batt-30" tooltip="30% Battery" /> */}
+        <div style={{transform:'translateX(20px)', cursor:'pointer'}}>new macro</div>
       </div>
     );
 };
