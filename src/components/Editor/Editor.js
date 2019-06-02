@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import "./Editor.css";
+import StoreContext from "../../store/StoreContext";
 const Editor = props => {
+  const { state, dispatch } = useContext(StoreContext);
+
+  const selectedIndex = state.reducer.selectedIndex;
+  console.log('dang o editor ' + selectedIndex)
+  var itemsOnEditor = state.reducer.widgetItems[selectedIndex].editorItems.map((item, index) => (
+    <li className="item item-editor" key={index}>
+      <input type="checkbox" />
+      <label className="check-box" />
+      <i className={"icon " + item.icon} />
+      <span>{item.text}</span>
+    </li>
+  ));
+
+
+  var widget = (
+    <div className="widget editor widget-custom-body">
+      <ul className="list-item list-item-editor">{itemsOnEditor} </ul>
+    </div>
+  );
+  
+ 
   return (
     <>
       <div className="widget widget-custom-head editor">
@@ -23,29 +45,30 @@ const Editor = props => {
           </div>
         </div>
       </div>
-
-      <div className="widget editor widget-custom-body">
-        <ul class="list-item list-item-editor">
-          <li class="item item-editor">
+      {widget}
+      {/* {selectedEditor.editor} */}
+      {/* <div className="widget editor widget-custom-body">
+        <ul className="list-item list-item-editor">
+          <li className="item item-editor">
             <input type="checkbox" />
             <label className="check-box" />
-            <i class="icon icon-editor time" />
+            <i className="icon icon-editor time" />
             <span>Delay</span>
           </li>
-          <li class="item item-editor">
+          <li className="item item-editor">
             <input type="checkbox" />
             <label className="check-box" />
-            <i class="icon icon-editor keyboard" />
+            <i className="icon icon-editor keyboard" />
             <span>Keyboard Function</span>
           </li>
-          <li class="item item-editor">
+          <li className="item item-editor">
             <input type="checkbox" />
             <label className="check-box" />
-            <i class="icon icon-editor keyboard" />
+            <i className="icon icon-editor keyboard" />
             <span>Keyboard Function</span>
           </li>
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };

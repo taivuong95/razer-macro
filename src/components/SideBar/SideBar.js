@@ -5,9 +5,9 @@ import "./SideBar.css";
 import StoreContext from "../../store/StoreContext";
 const SideBar = props => {
   const { state, dispatch } = useContext(StoreContext);
-  const listItems = state.sidebar.sideBarItems.map((item, index) => {
+  const listItems = state.reducer.sideBarItems.map((item, index) => {
     return (
-      <li className="item" key={index}>
+      <li className="item" key={index} onClick={() => dispatch({ type: "ADD_ITEM_TO_EDITOR", payload: index })}>
         <i className={"icon " + item.icon} />
         <span>{item.text}</span>
       </li>

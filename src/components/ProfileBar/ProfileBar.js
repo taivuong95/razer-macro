@@ -9,18 +9,47 @@ const ProfileBar = props => {
 
   // const {state, dispatch} = useStore();
   const { state, dispatch } = useContext(StoreContext);
+
+  const profileItems = state.reducer.profileItems.map((item, index) => {
+    return (
+      <div
+        className={item.class}
+        key={index}
+        onClick={e => this.onChangeHandler(e)}
+      >
+        {item.name}
+      </div>
+    );
+  });
+
+  const selectedIndex = state.reducer.selectedIndex;
+  const selectedItem = profileItems[selectedIndex];
+
   return (
     <div className="profile-bar flex">
       <div className="loader" tooltip="Syncing Profiles" />
       <div>macro</div>
       <input type="text" name="profile" id="profileEdit" maxLength={25} />
       <div className="dropdown-area">
-        <div id="profileDrop" className="s3-dropdown">
-          <div className="selected">macro 1</div>
+        <div
+          id="profileDrop"
+          className={
+            state.reducer.isExpand ? "s3-dropdown expand" : "s3-dropdown"
+          }
+          onClick={() => dispatch({ type: "TOGGLE_EXPAND" })}
+        >
+          <div className="selected">{selectedItem.props.children}</div>
           <div className="icon expand" />
         </div>
-        <div id="profileDropOpt" className="s3-options flex">
-          <div className="option selected">macro 1</div>
+        <div
+          id="profileDropOpt"
+          className={
+            state.reducer.isExpand
+              ? "s3-options flex expand"
+              : "s3-options flex"
+          }
+        >
+          {profileItems}
         </div>
       </div>
       <div
@@ -29,10 +58,17 @@ const ProfileBar = props => {
         onClick={() => dispatch({ type: "TOGGLE_EDIT" })}
       >
         <div
-          className={state.profile.isEdit ? "profile-act show" : "profile-act"}
+          className={state.reducer.isEdit ? "profile-act show" : "profile-act"}
           id="profileMenu"
         >
-          <div className="act action">add</div>
+          <div
+            className="act action"
+            onClick={() => {
+              dispatch({ type: "ADD_PROFILE_EDITOR" });
+            }}
+          >
+            add
+          </div>
           <div className="act action">import</div>
           <div className="act divider" />
           <div className="act action">rename</div>

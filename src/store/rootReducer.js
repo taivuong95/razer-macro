@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import profileReducer from './profileReducer';
-import sideBarReducer from './sideBarReducer';
+import Reducer from './Reducer';
 
 export default combineReducers({
-    profile: profileReducer,
-    sidebar: sideBarReducer
+    reducer: Reducer,
 });

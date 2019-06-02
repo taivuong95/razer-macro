@@ -7,6 +7,12 @@
   margin-left: 0!important;
   padding-left: 0;
   margin: 0;
+  max-height: 458px;
+  overflow-y: auto;
+  /* border: 1px solid black; */
+}
+.list-item-editor::-webkit-scrollbar-track{
+  background-color:#111!important;
 }
 .item-editor{
   padding:15px 15px;
@@ -24,7 +30,7 @@
 }
 
 .item-editor:hover{
-  background: #306832;
+  /* background: #306832; */
   border-color:#44d62c;
   border-left: 1px solid #44d62c;
   border-right: 1px solid #44d62c;
