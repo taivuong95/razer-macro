@@ -90,14 +90,14 @@ export default (state = initialState, action) => {
         name: "New Macro " + "(" + addCounter + ")",
         class: "option selected"
       };
-      cloneProfileItems.push(newProfile);
+      cloneProfileItems = [...cloneProfileItems, newProfile];
 
       var cloneWidgetItems = [...state.widgetItems];
       var newWidget = {
         name: "New Editor " + "(" + addCounter + ")",
         editorItems: []
       };
-      cloneWidgetItems.push(newWidget);
+      cloneWidgetItems = [...cloneWidgetItems, newWidget]
       addCounter++;
       return {
         ...state,
