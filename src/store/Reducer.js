@@ -100,7 +100,7 @@ export default (state = initialState, action) => {
         editorItems: []
       };
       cloneWidgetItems = [...cloneWidgetItems, newWidget];
-     
+
       return {
         ...state,
         editorItems: [],
@@ -139,7 +139,7 @@ export default (state = initialState, action) => {
       };
       cloneWidgetItems = [...cloneWidgetItems, newWidget];
       console.log(cloneWidgetItems[state.selectedIndex].editorItems);
-      
+
       return {
         ...state,
         // editorItems: [],
@@ -168,9 +168,29 @@ export default (state = initialState, action) => {
       };
 
     case "RENAME_PROFILE_EDITOR":
-      console.log('rename');
-      
-      return {...state}
+      let itemSelected = document.getElementById("itemSelected");
+      let itemSelectedName = itemSelected.innerText;
+      var profileEdit = document.getElementById("profileEdit");
+      profileEdit.value = itemSelectedName;
+      return { ...state, isRename: !state.isRename };
+
+    case "ON_RENAME_PROFILE_EDITOR_HANDLER":
+      console.log(action.payload);
+      console.log(state.selectedIndex);
+
+      var cloneProfileItems = [...state.profileItems];
+      var cloneWidgetItems = [...state.widgetItems];
+      var cloneEditorItems = [
+        ...cloneWidgetItems[state.selectedIndex].editorItems
+      ];
+      cloneProfileItems[state.selectedIndex].name = action.payload;
+      return {
+        ...state,
+        editorItems: cloneEditorItems,
+        widgetItems: cloneWidgetItems,
+        profileItems: cloneProfileItems,
+        isRename:false
+      };
 
     case "TOGGLE_EDIT":
       return { ...state, isEdit: !state.isEdit };

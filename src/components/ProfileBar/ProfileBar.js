@@ -15,7 +15,9 @@ const ProfileBar = props => {
       <div
         className={item.class}
         key={index}
-        onClick={() => dispatch({ type: "CHANGE_PROFILE_EDITOR", payload: index  })}
+        onClick={() =>
+          dispatch({ type: "CHANGE_PROFILE_EDITOR", payload: index })
+        }
       >
         {item.name}
       </div>
@@ -29,7 +31,23 @@ const ProfileBar = props => {
     <div className="profile-bar flex">
       <div className="loader" tooltip="Syncing Profiles" />
       <div>macro</div>
-      <input type="text" name="profile" id="profileEdit" maxLength={25} />
+      <input
+        type="text"
+        name="profile"
+        id="profileEdit"
+        maxLength={25}
+        className={state.reducer.isRename ? "show" : ""}
+        autofocus="true"
+        onFocus={e => e.target.select()}
+        onKeyDown={e => {
+          if (e.keyCode === 13) {
+            dispatch({
+              type: "ON_RENAME_PROFILE_EDITOR_HANDLER",
+              payload: e.target.value
+            });
+          }
+        }}
+      />
       <div className="dropdown-area">
         <div
           id="profileDrop"
@@ -38,7 +56,9 @@ const ProfileBar = props => {
           }
           onClick={() => dispatch({ type: "TOGGLE_EXPAND" })}
         >
-          <div className="selected" id="itemSelected">{selectedItem.props.children}</div>
+          <div className="selected" id="itemSelected">
+            {selectedItem.props.children}
+          </div>
           <div className="icon expand" />
         </div>
         <div
@@ -71,12 +91,22 @@ const ProfileBar = props => {
           </div>
           <div className="act action">import</div>
           <div className="act divider" />
-          <div className="act action" onClick={() => {
+          <div
+            className="act action"
+            onClick={() => {
               dispatch({ type: "RENAME_PROFILE_EDITOR" });
-            }}>rename</div>
-          <div className="act action"  onClick={() => {
+            }}
+          >
+            rename
+          </div>
+          <div
+            className="act action"
+            onClick={() => {
               dispatch({ type: "DUPLICATE_PROFILE_EDITOR" });
-            }}>duplicate</div>
+            }}
+          >
+            duplicate
+          </div>
           <div className="act action">export</div>
           <div className="act divider" />
           <div className="act action" id="deleteAction">
