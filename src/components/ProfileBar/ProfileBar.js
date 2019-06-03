@@ -15,7 +15,7 @@ const ProfileBar = props => {
       <div
         className={item.class}
         key={index}
-        onClick={e => this.onChangeHandler(e)}
+        onClick={() => dispatch({ type: "CHANGE_PROFILE_EDITOR", payload: index  })}
       >
         {item.name}
       </div>
@@ -38,7 +38,7 @@ const ProfileBar = props => {
           }
           onClick={() => dispatch({ type: "TOGGLE_EXPAND" })}
         >
-          <div className="selected">{selectedItem.props.children}</div>
+          <div className="selected" id="itemSelected">{selectedItem.props.children}</div>
           <div className="icon expand" />
         </div>
         <div
@@ -71,8 +71,12 @@ const ProfileBar = props => {
           </div>
           <div className="act action">import</div>
           <div className="act divider" />
-          <div className="act action">rename</div>
-          <div className="act action">duplicate</div>
+          <div className="act action" onClick={() => {
+              dispatch({ type: "RENAME_PROFILE_EDITOR" });
+            }}>rename</div>
+          <div className="act action"  onClick={() => {
+              dispatch({ type: "DUPLICATE_PROFILE_EDITOR" });
+            }}>duplicate</div>
           <div className="act action">export</div>
           <div className="act divider" />
           <div className="act action" id="deleteAction">

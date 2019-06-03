@@ -1,4 +1,5 @@
 var addCounter = 1;
+var dupCounter = 1;
 const initialState = {
   isEdit: false,
   isRename: false,
@@ -64,23 +65,24 @@ const initialState = {
     }
   ],
   editorItems: [], // mang cac item trong editor duoc chon
-  widgetItems: [
-    {name: 'Editor 1', editorItems:[]}
-  ] // mang cac editor
+  widgetItems: [{ name: "Editor 1", editorItems: [] }] // mang cac editor
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "ADD_ITEM_TO_EDITOR":
-    
       var cloneEditorItems = [...state.editorItems];
       // them item vao editor dang chon
       cloneEditorItems.push(state.sideBarItems[action.payload]);
       // them editor dang chon vao mang editor
       var cloneWidgetItems = [...state.widgetItems];
-      
-      cloneWidgetItems[state.selectedIndex].editorItems = [...cloneEditorItems]
-      return { ...state, editorItems: cloneEditorItems,widgetItems: cloneWidgetItems};
+
+      cloneWidgetItems[state.selectedIndex].editorItems = [...cloneEditorItems];
+      return {
+        ...state,
+        editorItems: cloneEditorItems,
+        widgetItems: cloneWidgetItems
+      };
     case "ADD_PROFILE_EDITOR":
       var cloneProfileItems = [...state.profileItems];
       cloneProfileItems.forEach(element => {
@@ -91,14 +93,14 @@ export default (state = initialState, action) => {
         class: "option selected"
       };
       cloneProfileItems = [...cloneProfileItems, newProfile];
-
+      addCounter++;
       var cloneWidgetItems = [...state.widgetItems];
       var newWidget = {
         name: "New Editor " + "(" + addCounter + ")",
         editorItems: []
       };
-      cloneWidgetItems = [...cloneWidgetItems, newWidget]
-      addCounter++;
+      cloneWidgetItems = [...cloneWidgetItems, newWidget];
+     
       return {
         ...state,
         editorItems: [],
@@ -106,7 +108,70 @@ export default (state = initialState, action) => {
         widgetItems: cloneWidgetItems,
         selectedIndex: cloneProfileItems.length - 1
       };
+
+    case "DUPLICATE_PROFILE_EDITOR":
+      let selectedItem = document.getElementById("itemSelected");
+      let selectedItemName = selectedItem.innerText;
+      var open = selectedItemName.lastIndexOf("(");
+      var close = selectedItemName.lastIndexOf(")");
+      if (open > 0 && close > 0 && close > open) {
+        dupCounter = parseInt(selectedItemName.substring(open + 1, close)) + 1;
+        selectedItemName = selectedItemName.substring(0, open);
+      } else {
+        dupCounter = 1;
+      }
+      selectedItemName = selectedItemName + " (" + dupCounter + ")";
+
+      var cloneProfileItems = [...state.profileItems];
+      cloneProfileItems.forEach(element => {
+        element.class = "option";
+      });
+      var newProfile = {
+        name: selectedItemName,
+        class: "option selected"
+      };
+      cloneProfileItems = [...cloneProfileItems, newProfile];
+      dupCounter++;
+      var cloneWidgetItems = [...state.widgetItems];
+      var newWidget = {
+        name: "New Editor " + "(" + dupCounter + ")",
+        editorItems: [...cloneWidgetItems[state.selectedIndex].editorItems]
+      };
+      cloneWidgetItems = [...cloneWidgetItems, newWidget];
+      console.log(cloneWidgetItems[state.selectedIndex].editorItems);
       
+      return {
+        ...state,
+        // editorItems: [],
+        profileItems: cloneProfileItems,
+        widgetItems: cloneWidgetItems,
+        selectedIndex: cloneProfileItems.length - 1
+      };
+
+    case "CHANGE_PROFILE_EDITOR":
+      var cloneProfileItems = [...state.profileItems];
+      var cloneWidgetItems = [...state.widgetItems];
+      var cloneEditorItems = [...cloneWidgetItems[action.payload].editorItems];
+      // console.log(cloneEditorItems);
+
+      cloneProfileItems.forEach(element => {
+        element.class = "option";
+      });
+      cloneProfileItems[action.payload].class = "option selected";
+
+      return {
+        ...state,
+        editorItems: cloneEditorItems,
+        widgetItems: cloneWidgetItems,
+        profileItems: cloneProfileItems,
+        selectedIndex: action.payload
+      };
+
+    case "RENAME_PROFILE_EDITOR":
+      console.log('rename');
+      
+      return {...state}
+
     case "TOGGLE_EDIT":
       return { ...state, isEdit: !state.isEdit };
     case "TOGGLE_EXPAND":

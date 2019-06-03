@@ -6,7 +6,7 @@ const Editor = props => {
   const { state, dispatch } = useContext(StoreContext);
 
   const selectedIndex = state.reducer.selectedIndex;
-  console.log('dang o editor ' + selectedIndex)
+  // console.log('dang o editor ' + selectedIndex)
   var itemsOnEditor = state.reducer.widgetItems[selectedIndex].editorItems.map((item, index) => (
     <li className="item item-editor" key={index}>
       <input type="checkbox" />
