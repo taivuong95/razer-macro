@@ -66,6 +66,11 @@
   background: url("../../assets/img_ui_3/icon_loop.svg");
 }
 
+.widget .icon.more{
+  background: url("../../assets/img_ui_3/icon_more.svg");
+  opacity: 0;
+}
+
 .widget .icon.time,
 .widget .icon.keyboard,
 .widget .icon.mouse,
@@ -77,9 +82,9 @@
 .widget .icon.icon.command,
 .widget .icon.multimedia,
 .widget .icon.text-function,
-.widget .icon.loop {
+.widget .icon.loop,
+.widget .icon.more {
   content: "";
-
   background-repeat: no-repeat;
   display: inline-block;
   background-size: 25px 25px;
@@ -98,7 +103,7 @@
   text-transform: uppercase;
   padding: 15px 0;
   cursor: pointer;
-  transition: 0.4s;
+  /* transition: 0.4s; */
 }
 
 .item span{

@@ -20,7 +20,7 @@
   border-right: none;
   border-left: none;
   background: #111;
-  transition: 0.4s;
+  /* transition: 0.4s; */
 }
 
 .widget .icon-editor{
@@ -34,6 +34,9 @@
   border-color:#44d62c;
   border-left: 1px solid #44d62c;
   border-right: 1px solid #44d62c;
+}
+.item-editor.clicked {
+  background: #2c5526; 
 }
 
 .head-editor {

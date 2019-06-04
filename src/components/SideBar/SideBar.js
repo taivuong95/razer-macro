@@ -10,6 +10,7 @@ const SideBar = props => {
       <li className="item" key={index} onClick={() => dispatch({ type: "ADD_ITEM_TO_EDITOR", payload: index })}>
         <i className={"icon " + item.icon} />
         <span>{item.text}</span>
+        <i className="icon more"></i>
       </li>
     );
   })

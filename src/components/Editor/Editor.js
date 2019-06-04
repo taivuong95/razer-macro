@@ -4,26 +4,40 @@ import "./Editor.css";
 import StoreContext from "../../store/StoreContext";
 const Editor = props => {
   const { state, dispatch } = useContext(StoreContext);
-
+  const [isClick, setClick] = useState(false);
+  let input = React.createRef();
+  // function handleClick(e) {
+  //   e.target.classList.toggle('clicked');
+  // }
   const selectedIndex = state.reducer.selectedIndex;
   // console.log('dang o editor ' + selectedIndex)
-  var itemsOnEditor = state.reducer.widgetItems[selectedIndex].editorItems.map((item, index) => (
-    <li className="item item-editor" key={index}>
-      <input type="checkbox" />
-      <label className="check-box" />
-      <i className={"icon " + item.icon} />
-      <span>{item.text}</span>
-    </li>
-  ));
-
+  var itemsOnEditor = state.reducer.widgetItems[selectedIndex].editorItems.map(
+    (item, index) => (
+      
+      <li
+        ref={input}
+        className={item.active ? "item item-editor clicked" : "item item-editor"}
+        key={index}
+        data-key={index}
+        onClick={e => dispatch({
+          type: "SELECT_EDITOR_ITEM",
+          payload:  e.target
+        })}
+      >
+        <input type="checkbox" />
+        <label className={item.active ? 'check-box checked' : 'check-box'}/>
+        <i className={"icon " + item.icon} />
+        <span>{item.text}</span>
+      </li>
+    )
+  );
 
   var widget = (
     <div className="widget editor widget-custom-body">
       <ul className="list-item list-item-editor">{itemsOnEditor} </ul>
     </div>
   );
-  
- 
+
   return (
     <>
       <div className="widget widget-custom-head editor">

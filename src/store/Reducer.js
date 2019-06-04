@@ -189,7 +189,31 @@ export default (state = initialState, action) => {
         editorItems: cloneEditorItems,
         widgetItems: cloneWidgetItems,
         profileItems: cloneProfileItems,
-        isRename:false
+        isRename: false
+      };
+
+    case "SELECT_EDITOR_ITEM":
+       var key = action.payload.dataset["key"];
+
+      var cloneProfileItems = [...state.profileItems];
+      var cloneWidgetItems = [...state.widgetItems];
+      var cloneEditorItems = [
+        ...cloneWidgetItems[state.selectedIndex].editorItems
+      ];
+      console.log(key);
+      // console.log(action.payload);
+      
+        console.log(cloneEditorItems[key]);
+
+        // cloneEditorItems[key].active = true;
+      //  console.log(cloneEditorItems[action.payload]);
+
+       
+      return {
+        ...state,
+        editorItems: cloneEditorItems,
+        widgetItems: cloneWidgetItems,
+        profileItems: cloneProfileItems
       };
 
     case "TOGGLE_EDIT":
